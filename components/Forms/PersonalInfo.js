@@ -19,14 +19,14 @@ export default function PersonalInfo() {
 
   return (
     <form onSubmit={handleSubmit}>
-      {fields.map(({ name, value }) => (
+      {fields.map(({ name, type, value }) => (
         <Fragment key={name}>
           <label className={styles.label} htmlFor={name}>
             {name}
           </label>
           <input
             key={name}
-            type="text"
+            type={type}
             name={name}
             value={value}
             onChange={handleChange}

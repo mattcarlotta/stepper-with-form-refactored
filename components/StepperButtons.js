@@ -20,7 +20,7 @@ export default function StepperButtons() {
           type="submit"
           className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-500 hover:bg-yallow-600 md:py-4 md:text-lg md:px-10"
         >
-          Submit
+          {stepper === 2 ? "Submit" : "Next"}
         </button>
       </div>
     </div>
