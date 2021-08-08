@@ -38,7 +38,7 @@ export default function FormProvider({ children }) {
   };
 
   const setActiveStep = (step) => {
-    const nextStep = step >= 0 && step < 3 ? step : step < 0 ? 0 : 3;
+    const nextStep = step >= 0 && step < steps.length ? step : step < 0 ? 0 : 3;
 
     setStepsData((prevState) =>
       prevState.map((step) =>
