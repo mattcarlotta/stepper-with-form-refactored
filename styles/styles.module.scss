@@ -1,0 +1,80 @@
+$primary-color: #1d3557;
+$error-color: #e63946;
+$bg-color: #f1faee;
+$text-color: #293241;
+$color-white: #fff;
+
+$border-radius: 4px;
+
+.container {
+  padding: 3rem;
+
+  .formCard {
+    padding: 2rem;
+    background: white;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: $text-color;
+    margin-bottom: 2rem;
+  }
+
+  h2 {
+    color: $text-color;
+    margin-bottom: 1rem;
+  }
+
+  .formRow {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.5rem;
+  }
+
+  button.back {
+    margin-right: 1rem;
+    padding: 0.3rem;
+    cursor: pointer;
+  }
+
+  .input-error {
+    border-color: $error-color;
+  }
+
+  .error {
+    color: $error-color;
+    font-size: 1rem;
+    margin-top: 0.3rem;
+  }
+
+  .disabled-btn {
+    cursor: not-allowed;
+    background: rgba($primary-color, 0.8);
+  }
+
+  input[type="checkbox"] {
+    margin-right: 0.7rem;
+  }
+
+  .steps {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: $text-color;
+    font-size: 1.2rem;
+  }
+
+  .errorText {
+    color: $error-color;
+    font-size: 1.2rem;
+    margin-top: 0.4rem;
+    display: inline-block;
+  }
+
+  .hideForm {
+    display: none;
+  }
+
+  .showForm {
+    display: block;
+  }
+}
