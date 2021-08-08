@@ -1,28 +1,39 @@
-import styles from "../../styles/styles.module.scss";
+// import styles from "../../styles/styles.module.scss";
+import { Fragment } from "react";
 import { useFormData } from "../../context";
-import { useState } from 'react'
+import StepperButtons from "../StepperButtons";
+import styles from "../../styles/styles.module.scss";
 
+export default function PersonalInfo() {
+  const { steps, stepper, setActiveStep, saveStepsData } = useFormData();
+  const { fields } = steps.find(({ name }) => name === "Dateneingabe");
 
+  const handleChange = ({ target: { name, value } }) => {
+    saveStepsData("Dateneingabe", name, value);
+  };
 
-
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-export default function PersonalInfo({ formStep, nextFormStep }) {
-  const [agreed, setAgreed] = useState(false)
-  const { setFormValues } = useFormData();
-
-  const handleSubmit = (values) => {
-    setFormValues(values);
-    nextFormStep();
-    prevFormStep();
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setActiveStep(stepper + 1);
   };
 
   return (
-    <div className={formStep === 1 ? 'block' : 'hidden'}>
-      <h2>Step2</h2>
-    </div>
+    <form onSubmit={handleSubmit}>
+      {fields.map(({ name, value }) => (
+        <Fragment key={name}>
+          <label className={styles.label} htmlFor={name}>
+            {name}
+          </label>
+          <input
+            key={name}
+            type="text"
+            name={name}
+            value={value}
+            onChange={handleChange}
+          />
+          <StepperButtons />
+        </Fragment>
+      ))}
+    </form>
   );
 }

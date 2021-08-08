@@ -9,11 +9,6 @@ $border-radius: 4px;
 .container {
   padding: 3rem;
 
-  .formCard {
-    padding: 2rem;
-    background: white;
-  }
-
   h1 {
     font-size: 2rem;
     color: $text-color;
@@ -77,4 +72,17 @@ $border-radius: 4px;
   .showForm {
     display: block;
   }
+}
+
+.formCard {
+  margin: 0 auto;
+  width: 500px;
+  background: white;
+  text-align: center;
+}
+
+.label {
+  display: block;
+  margin-bottom: 5px;
+  text-transform: capitalize;
 }

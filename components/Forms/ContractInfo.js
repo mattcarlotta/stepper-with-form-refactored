@@ -1,28 +1,38 @@
+import { Fragment } from "react";
 import { useFormData } from "../../context";
-import { useState } from "react";
-import { Card } from "../Card.js"
+import StepperButtons from "../StepperButtons";
+import styles from "../../styles/styles.module.scss";
 
+export default function ContractInfo() {
+  const { steps, stepper, setActiveStep, saveStepsData } = useFormData();
+  const { fields } = steps.find(({ name }) => name === "Vertrag");
 
-
-function classNames(...classes) {
-  return classes.filter(Boolean).join(' ')
-}
-
-export default function ContractInfo({ formStep, selected }) {
-  const { setFormValues } = useFormData();
-  const [isSelected, setisSelected] = useState();
-
-
-  const handleSubmit = (values) => {
-    setFormValues(values);
-    nextFormStep();
+  const handleChange = ({ target: { name, value } }) => {
+    saveStepsData("Vertrag", name, value);
   };
 
-  const mode = selected ? 'border-red-300 border-8' : 'border-gray-400'
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setActiveStep(stepper + 1);
+  };
 
   return (
-    <div className={formStep === 0 ? 'block' : 'hidden'}>
-      <h2>Step1</h2>
-    </div>
+    <form onSubmit={handleSubmit}>
+      {fields.map(({ name, type, value }) => (
+        <Fragment key={name}>
+          <label className={styles.label} htmlFor={name}>
+            {name}
+          </label>
+          <input
+            key={name}
+            type={type}
+            name={name}
+            value={value}
+            onChange={handleChange}
+          />
+          <StepperButtons />
+        </Fragment>
+      ))}
+    </form>
   );
 }
