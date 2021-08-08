@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-First, clone the repo:
+First, open a terminal and clone the repo:
 
 ```bash
 git clone git@github.com:mattcarlotta/stepper-with-form-refactored.git
