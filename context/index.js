@@ -10,14 +10,14 @@ export default function FormProvider({ children }) {
       fields: [
         {
           name: "benutzername",
-          placeholder: "Bitte geben Sie ein Benutzername an...",
+          placeholder: "Bitte geben Sie ein Benutzername ein...",
           type: "text",
           value: "",
         },
         {
           name: "kennwort",
           type: "password",
-          placeholder: "Bitte geben Sie ein Kennwort an...",
+          placeholder: "Bitte geben Sie ein Kennwort ein...",
           value: "",
         },
       ],
@@ -28,13 +28,13 @@ export default function FormProvider({ children }) {
       fields: [
         {
           name: "email",
-          placeholder: "Bitte geben Sie eine Email-Adresse an...",
+          placeholder: "Bitte geben Sie eine Email-Adresse ein...",
           type: "email",
           value: "",
         },
         {
           name: "postleitzahl",
-          placeholder: "Bitte geben Sie eine Postleitzahl an...",
+          placeholder: "Bitte geben Sie eine Postleitzahl ein...",
           type: "number",
           value: "",
         },
