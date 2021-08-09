@@ -3,6 +3,15 @@ import { useFormData } from "../context";
 
 export default function FormCompleted() {
   const { steps } = useFormData();
+
+  const parsedFields = steps.reduce((acc, { fields }) => {
+    if (fields)
+      fields.forEach(({ name, value }) => {
+        acc[name] = value;
+      });
+    return acc;
+  }, {});
+
   return (
     <>
       <h2>Thank you for your purchase! 🎉</h2>
@@ -14,7 +23,7 @@ export default function FormCompleted() {
           overflowX: "scroll",
         }}
       >
-        <code>{JSON.stringify(steps, null, 2)}</code>
+        <code>{JSON.stringify(parsedFields, null, 2)}</code>
       </pre>
     </>
   );

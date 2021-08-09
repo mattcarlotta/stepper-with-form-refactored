@@ -20,10 +20,14 @@ const App = () => {
       <Stepper />
       <div className={styles.container}>
         <div className={styles.formCard}>
-          {stepper === 0 && <ContractInfo />}
-          {stepper === 1 && <PersonalInfo />}
-          {stepper === 2 && <ConfirmPurchase />}
-          {stepper === 3 && <FormCompleted />}
+          {
+            {
+              0: <ContractInfo />,
+              1: <PersonalInfo />,
+              2: <ConfirmPurchase />,
+              3: <FormCompleted />,
+            }[stepper]
+          }
         </div>
       </div>
     </div>

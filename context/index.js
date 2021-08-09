@@ -7,17 +7,42 @@ export default function FormProvider({ children }) {
   const [steps, setStepsData] = useState([
     {
       name: "Vertrag",
-      fields: [{ name: "username", type: "text", value: "" }],
+      fields: [
+        {
+          name: "benutzername",
+          placeholder: "Bitte geben Sie ein Benutzername an...",
+          type: "text",
+          value: "",
+        },
+        {
+          name: "kennwort",
+          type: "password",
+          placeholder: "Bitte geben Sie ein Kennwort an...",
+          value: "",
+        },
+      ],
       status: "active",
     },
     {
       name: "Dateneingabe",
-      fields: [{ name: "password", type: "password", value: "" }],
+      fields: [
+        {
+          name: "email",
+          placeholder: "Bitte geben Sie eine Email-Adresse an...",
+          type: "email",
+          value: "",
+        },
+        {
+          name: "postleitzahl",
+          placeholder: "Bitte geben Sie eine Postleitzahl an...",
+          type: "number",
+          value: "",
+        },
+      ],
       status: "incomplete",
     },
     {
       name: "Bestätigung",
-      fields: [{ name: "email", type: "email", value: "" }],
       status: "incomplete",
     },
   ]);

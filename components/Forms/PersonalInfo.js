@@ -19,7 +19,7 @@ export default function PersonalInfo() {
 
   return (
     <form onSubmit={handleSubmit}>
-      {fields.map(({ name, type, value }) => (
+      {fields.map(({ name, placeholder, type, value }) => (
         <Fragment key={name}>
           <label className={styles.label} htmlFor={name}>
             {name}
@@ -28,12 +28,13 @@ export default function PersonalInfo() {
             key={name}
             type={type}
             name={name}
+            placeholder={placeholder}
             value={value}
             onChange={handleChange}
           />
-          <StepperButtons />
         </Fragment>
       ))}
+      <StepperButtons />
     </form>
   );
 }

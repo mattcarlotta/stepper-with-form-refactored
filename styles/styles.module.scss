@@ -79,10 +79,24 @@ $border-radius: 4px;
   width: 500px;
   background: white;
   text-align: center;
+
+  input::placeholder {
+    font-size: 15px;
+  }
+}
+
+.disabledInput {
+  background: #ebebeb;
+  border-color: #c5c5c5;
+}
+
+.disabledInput:focus {
+  border-color: #c5c5c5;
+  box-shadow: none;
 }
 
 .label {
   display: block;
-  margin-bottom: 5px;
+  margin: 15px 0 2px 0;
   text-transform: capitalize;
 }
