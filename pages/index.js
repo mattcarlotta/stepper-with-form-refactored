@@ -12,6 +12,8 @@ import styles from "../styles/styles.module.scss";
 const App = () => {
   const { stepper } = useFormData();
 
+  console.log("stepper", stepper);
+
   return (
     <div>
       <Head>

@@ -1,15 +1,8 @@
-import { Fragment } from "react";
 import { useFormData } from "../../context";
 import StepperButtons from "../StepperButtons";
-import styles from "../../styles/styles.module.scss";
 
 export default function ContractInfo() {
-  const { steps, stepper, setActiveStep, saveStepsData } = useFormData();
-  const { fields } = steps.find(({ name }) => name === "Vertrag");
-
-  const handleChange = ({ target: { name, value } }) => {
-    saveStepsData("Vertrag", name, value);
-  };
+  const { stepper, setActiveStep } = useFormData();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,21 +11,7 @@ export default function ContractInfo() {
 
   return (
     <form onSubmit={handleSubmit}>
-      {fields.map(({ name, placeholder, type, value }) => (
-        <Fragment key={name}>
-          <label className={styles.label} htmlFor={name}>
-            {name}
-          </label>
-          <input
-            key={name}
-            type={type}
-            name={name}
-            placeholder={placeholder}
-            value={value}
-            onChange={handleChange}
-          />
-        </Fragment>
-      ))}
+      <h1>Step 0</h1>
       <StepperButtons />
     </form>
   );

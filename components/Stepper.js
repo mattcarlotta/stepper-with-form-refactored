@@ -5,7 +5,7 @@ import classNames from "../utils/classNames";
 // status: 'complete', 'current', 'upcoming'
 
 export default function Stepper() {
-  const { steps, setActiveStep } = useContext(FormContext);
+  const { steps, stepper } = useContext(FormContext);
 
   return (
     <nav aria-label="Progress">
@@ -19,7 +19,7 @@ export default function Stepper() {
                 "relative"
               )}
             >
-              {status === "active" ? (
+              {status === "active" || stepper === stepIdx ? (
                 <>
                   <div
                     className="absolute inset-0 flex items-center"
@@ -27,8 +27,7 @@ export default function Stepper() {
                   >
                     <div className="h-0.5 w-full bg-gray-200" />
                   </div>
-                  <button
-                    onClick={() => setActiveStep(stepIdx)}
+                  <div
                     className="relative w-8 h-8 flex items-center justify-center bg-white border-2 border-yellow-500 rounded-full"
                     aria-current="step"
                   >
@@ -46,7 +45,7 @@ export default function Stepper() {
                         {name}
                       </span>
                     </span>
-                  </button>
+                  </div>
                 </>
               ) : status === "completed" ? (
                 <>
@@ -56,9 +55,8 @@ export default function Stepper() {
                   >
                     <div className="h-0.5 w-full bg-yellow-500" />
                   </div>
-                  <button
-                    onClick={() => setActiveStep(stepIdx)}
-                    type="button"
+                  <div
+                    // onClick={() => setActiveStep(stepIdx)}
                     className="relative w-8 h-8 flex items-center justify-center bg-yellow-500 rounded-full hover:bg-yellow-500"
                   >
                     <span className="h-9 flex flex-col items-center">
@@ -72,7 +70,7 @@ export default function Stepper() {
                         {name}
                       </span>
                     </span>
-                  </button>
+                  </div>
                 </>
               ) : (
                 <>

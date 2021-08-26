@@ -1,44 +1,21 @@
+import get from "lodash.get";
 import { useState, createContext, useContext } from "react";
+import { useRouter } from "next/router";
+import React from "react";
 
 export const FormContext = createContext();
 
 export default function FormProvider({ children }) {
-  const [stepper, setStepper] = useState(0);
+  const router = useRouter();
+  const stepper = parseInt(get(router, ["query", "step"]), 10) || 0;
+  // const [stepper, setStepper] = React.useState(stepper);
   const [steps, setStepsData] = useState([
     {
       name: "Vertrag",
-      fields: [
-        {
-          name: "benutzername",
-          placeholder: "Bitte geben Sie ein Benutzername ein...",
-          type: "text",
-          value: "",
-        },
-        {
-          name: "kennwort",
-          type: "password",
-          placeholder: "Bitte geben Sie ein Kennwort ein...",
-          value: "",
-        },
-      ],
       status: "active",
     },
     {
       name: "Dateneingabe",
-      fields: [
-        {
-          name: "email",
-          placeholder: "Bitte geben Sie eine Email-Adresse ein...",
-          type: "email",
-          value: "",
-        },
-        {
-          name: "postleitzahl",
-          placeholder: "Bitte geben Sie eine Postleitzahl ein...",
-          type: "number",
-          value: "",
-        },
-      ],
       status: "incomplete",
     },
     {
@@ -46,6 +23,10 @@ export default function FormProvider({ children }) {
       status: "incomplete",
     },
   ]);
+
+  React.useEffect(() => {
+    router.replace("?step=0");
+  }, []);
 
   const saveStepsData = (name, fieldName, value) => {
     setStepsData((prevState) =>
@@ -78,7 +59,8 @@ export default function FormProvider({ children }) {
           : step
       )
     );
-    setStepper(nextStep);
+
+    router.push(`?step=${nextStep}`);
   };
 
   return (
